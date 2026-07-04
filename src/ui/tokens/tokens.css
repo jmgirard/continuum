@@ -1,0 +1,65 @@
+/*
+ * Continuum design tokens — the single reskin surface.
+ * Values are transcribed verbatim from the Claude Design handoff
+ * ("Rating View.dc.html" → Design system sheet). Neutral greys carry all
+ * chrome; saturated colour is reserved for the rating scale so the participant
+ * reads colour as meaning. Dark is the default (better for watching video);
+ * light is required and derived.
+ */
+
+:root {
+  /* ---- Typography ---- */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 18px;
+  --space-6: 28px;
+
+  /* ---- Corner radius ---- */
+  --radius-chip: 6px;
+  --radius-input: 8px;
+  --radius-panel: 12px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  /* ---- Motion (the damped indicator; instrument-grade, never twitchy) ---- */
+  --motion-follow-tau: 90ms; /* critically damped follow spring, no overshoot */
+  --motion-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-trail-decay: 300ms; /* optional trail fade */
+  --motion-chrome-fade: 180ms; /* focus-mode chrome fade */
+
+  /* ---- Accent (only chromatic UI colour; only on the live control) ---- */
+  --accent: #5b8def;
+}
+
+/* Dark theme (default) */
+:root,
+[data-theme='dark'] {
+  --bg: #101216;
+  --surface: #171a20;
+  --surface-2: #1e222a;
+  --raised: #20252e;
+  --line: #2a2f39;
+  --fg: #e6e8ec;
+  --fg-2: #9aa1ad;
+  --fg-3: #6b7280;
+  --focus-ring: rgba(91, 141, 239, 0.55);
+}
+
+/* Light theme (required, derived) */
+[data-theme='light'] {
+  --bg: #eceef1;
+  --surface: #ffffff;
+  --surface-2: #e8eaee;
+  --raised: #ffffff;
+  --line: #dbdee3;
+  --fg: #191c22;
+  --fg-2: #525963;
+  --fg-3: #8a919b;
+  --focus-ring: rgba(91, 141, 239, 0.65);
+}
