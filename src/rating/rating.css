@@ -1,0 +1,173 @@
+.slider {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.slider-label {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  font-weight: 500;
+  flex: 0 0 auto;
+}
+
+/* Body: ticks | track | axis label */
+.slider-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Ticks column — numbers positioned by offset so they line up with the track */
+.slider-ticks {
+  position: relative;
+  width: 34px;
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+}
+.slider-tick {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.slider-tick-num {
+  min-width: 12px;
+  text-align: right;
+}
+.slider-tick-line {
+  width: 7px;
+  height: 1px;
+  background: var(--line);
+}
+.slider-tick--on .slider-tick-num {
+  color: var(--fg);
+}
+.slider-tick--on .slider-tick-line {
+  width: 10px;
+  background: var(--fg-3);
+}
+
+/* Track — the coloured gradient the participant reads as meaning */
+.slider-track {
+  position: relative;
+  width: 46px;
+  flex: 0 0 auto;
+  align-self: stretch;
+  cursor: pointer;
+  touch-action: none;
+}
+.slider-gradient {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Handle — instrument-grade; motion smoothing (M7) is display-only */
+.slider-handle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 15px;
+  border-radius: 8px;
+  background: #f6f8fb;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+.slider-handle:active {
+  cursor: grabbing;
+}
+.slider-handle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.slider-handle-grip {
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: #9aa1ad;
+}
+
+/* Value readout beside the handle */
+.slider-bubble {
+  position: absolute;
+  left: calc(50% + 46px);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 9px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.slider-bubble-value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1;
+}
+.slider-bubble-max {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--fg-3);
+  letter-spacing: 0.05em;
+}
+
+/* Vertical axis label */
+.slider-axis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  flex: 0 0 auto;
+}
+.slider-axis span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--fg-3);
+  text-transform: uppercase;
+}
+
+.slider-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
+  color: var(--fg-3);
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  flex: 0 0 auto;
+}
+.slider-hint-dot {
+  opacity: 0.4;
+}

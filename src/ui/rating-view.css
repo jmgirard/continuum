@@ -25,25 +25,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.rating-col-placeholder {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-input);
-  color: var(--fg-3);
-}
-.rating-col-placeholder-label {
-  font-size: 12px;
-  letter-spacing: 0.02em;
-}
-.rating-col-placeholder-sub {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}

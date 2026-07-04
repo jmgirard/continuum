@@ -3,6 +3,7 @@ import { useTheme } from './useTheme';
 import { FileDropZone } from '../media/FileDropZone';
 import { RatingView } from '../ui/RatingView';
 import { useObjectUrl } from '../media/useObjectUrl';
+import { DEFAULT_SCALE } from '../config/scale';
 import type { LoadedMedia, MediaKind } from '../media/types';
 import './App.css';
 
@@ -71,7 +72,7 @@ export function App(): JSX.Element {
       </header>
 
       {media ? (
-        <RatingView media={media} transportLocked={transportLocked} />
+        <RatingView media={media} scale={DEFAULT_SCALE} transportLocked={transportLocked} />
       ) : (
         <main className="app-body">
           <FileDropZone onLoad={setSelection} />
