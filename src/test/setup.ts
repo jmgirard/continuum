@@ -40,6 +40,23 @@ if (typeof window.localStorage === 'undefined' || window.localStorage === null) 
   Object.defineProperty(globalThis, 'localStorage', { value: storage, configurable: true });
 }
 
+/*
+ * Object URL stubs. jsdom does not implement URL.createObjectURL/revokeObjectURL,
+ * which the media layer uses to play local files. Provide counting stubs so tests
+ * can load media and assert URL lifecycle without a real Blob URL.
+ */
+if (typeof URL.createObjectURL === 'undefined') {
+  let counter = 0;
+  Object.defineProperty(URL, 'createObjectURL', {
+    configurable: true,
+    value: () => `blob:mock/${++counter}`,
+  });
+  Object.defineProperty(URL, 'revokeObjectURL', {
+    configurable: true,
+    value: () => {},
+  });
+}
+
 // Unmount React trees between tests to prevent cross-test DOM leakage.
 afterEach(() => {
   cleanup();

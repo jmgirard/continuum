@@ -1,0 +1,95 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: rgba(0, 0, 0, 0.5);
+  animation: modal-overlay-in var(--motion-chrome-fade) var(--motion-ease);
+}
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: var(--space-5) 20px 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  animation: modal-in var(--motion-chrome-fade) var(--motion-ease);
+}
+
+.modal-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.modal-message {
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+/* Ghost (safe) action */
+.btn-ghost {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-2);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-input);
+  padding: 9px 16px;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  color: var(--fg);
+  border-color: var(--fg-3);
+}
+
+/* Destructive action — warm tone drawn from the palette, kept restrained */
+.btn-danger {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: #d9702a;
+  border: 1px solid #d9702a;
+  border-radius: var(--radius-input);
+  padding: 9px 16px;
+  cursor: pointer;
+}
+.btn-danger:hover {
+  filter: brightness(1.08);
+}
+
+@keyframes modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

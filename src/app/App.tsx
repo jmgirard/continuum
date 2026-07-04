@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from './useTheme';
 import { FileDropZone } from '../media/FileDropZone';
 import { RatingView } from '../ui/RatingView';
+import { ConfirmDialog } from '../ui/ConfirmDialog';
 import { useObjectUrl } from '../media/useObjectUrl';
 import { DEFAULT_SCALE } from '../config/scale';
 import type { LoadedMedia, MediaKind } from '../media/types';
@@ -24,6 +25,7 @@ export function App(): JSX.Element {
   const { theme, toggleTheme } = useTheme();
   const [selection, setSelection] = useState<Selection | null>(null);
   const [transportLocked, setTransportLocked] = useState(false);
+  const [confirmChangeOpen, setConfirmChangeOpen] = useState(false);
 
   // Object URL lifecycle (created + revoked) is owned by the hook.
   const url = useObjectUrl(selection?.file ?? null);
@@ -53,7 +55,7 @@ export function App(): JSX.Element {
             >
               Transport {transportLocked ? 'locked' : 'free'}
             </button>
-            <button type="button" className="text-btn" onClick={() => setSelection(null)}>
+            <button type="button" className="text-btn" onClick={() => setConfirmChangeOpen(true)}>
               Change file
             </button>
           </>
@@ -78,6 +80,20 @@ export function App(): JSX.Element {
           <FileDropZone onLoad={setSelection} />
         </main>
       )}
+
+      <ConfirmDialog
+        open={confirmChangeOpen}
+        title="Change media file?"
+        message="This ends the current rating session and discards its ratings for this clip. This can’t be undone."
+        confirmLabel="Change file"
+        cancelLabel="Keep rating"
+        destructive
+        onConfirm={() => {
+          setConfirmChangeOpen(false);
+          setSelection(null);
+        }}
+        onCancel={() => setConfirmChangeOpen(false)}
+      />
     </div>
   );
 }
