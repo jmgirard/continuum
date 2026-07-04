@@ -17,6 +17,13 @@ interface RatingViewProps {
 }
 
 /**
+ * How far the "jump back" button rewinds. Backward-only recovery from a
+ * distraction/mistake — there is no forward seek, so sections can't be skipped.
+ * TODO(phase-3): make configurable in the study settings.
+ */
+const JUMP_BACK_SECONDS = 10;
+
+/**
  * The participant rating screen: media panel + transport on the left, the rating
  * control column on the right (design's 1D layout). Media + transport (M2), the
  * vertical slider (M3), and per-frame sampling attached to the media element (M4).
@@ -57,7 +64,8 @@ export function RatingView({ media, scale, transportLocked }: RatingViewProps): 
           state={controller.state}
           transportLocked={transportLocked}
           onToggle={controller.toggle}
-          onSeek={controller.seek}
+          onJumpBack={() => controller.seek(controller.state.currentTime - JUMP_BACK_SECONDS)}
+          jumpBackSeconds={JUMP_BACK_SECONDS}
         />
       </div>
 
