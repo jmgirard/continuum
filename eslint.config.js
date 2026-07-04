@@ -45,6 +45,8 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      // RTL's act() returns a thenable even for synchronous updates.
+      '@typescript-eslint/no-floating-promises': 'off',
     },
   },
   prettier,

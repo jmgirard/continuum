@@ -117,6 +117,34 @@ sample_index,media_time_s,value
 6. CSV export + round-trip tests.
 7. Focus mode + a11y + dark-theme polish; reskin to the Claude Design output if attached.
 
+## Progress — Phase 1 COMPLETE (all 7 milestones done)
+- ✅ **M1 Scaffold** — Vite + TS(strict) + ESLint/Prettier + Vitest + GH Actions CI + GPLv3;
+  design tokens (`src/ui/tokens/tokens.css`) transcribed from the handoff; dark default + light.
+- ✅ **M2 Media** — `src/media/`: File API load + object-URL lifecycle; `useMediaElement` transport
+  (play/pause/spacebar). Transport later changed (see M-extra) to remove free scrubbing.
+- ✅ **M3 Rating** — `src/rating/`: `scaleModel` value↔position mapping; `VerticalSlider`
+  (mouse + arrows/Home/End/PageUp-Down, ARIA). Plus `ConfirmDialog` guarding "Change file".
+- ✅ **M4 Sampling** — `src/sampling/`: off-React `SampleBuffer`; `SamplingEngine` (rVFC per-frame +
+  100 Hz Web-Worker fallback); `useSampling`; live capture indicator. (Verified: audio path live
+  at 100 Hz; video rVFC unit-tested — headless preview can't present frames.)
+- ✅ **M-extra Transport safety** — removed free scrubbing/forward seek; backward-only "jump back 10s"
+  button (`JUMP_BACK_SECONDS` in `RatingView`); progress bar is display-only.
+- ✅ **M5 Autosave/resume** — `src/session/`: `sessionStore` (IndexedDB via `idb`), `useAutosave`
+  (4s + tab-hide/unload, off sampling path), `ResumePrompt` (not Escape/backdrop-dismissible).
+  Session/buffer ownership lives in `App`.
+- ✅ **M6 CSV export** — `src/export/csv.ts`: commented `# key: value` header + `sample_index,
+  media_time_s,value` rows; "Export CSV" button; papaparse round-trip test (`comments:'#'`).
+- ✅ **M7 Polish** — focus mode (`useFocusMode`: chrome fades on play, returns on activity/pause);
+  a11y (media aria-labels, focus-visible, reduced-motion); responsive header; light/dark verified.
+
+**Test count:** 76 across 12 files. `npm run ci` green. Node 26 local / CI pins Node 20.
+**Env note:** headless preview throttles video playback (rVFC won't fire); verify per-frame sync on
+a real machine with an MP4/WebM. Config lives in `src/config/` (`appInfo`, `scale`, `palettes`).
+
+## Not started (future phases — do NOT build without a new prompt)
+Phase 2 (2D circumplex + gamepad), Phase 3 (researcher console), Phase 4 (cloud/Supabase),
+Phase 5 (crowdworker polish). See `continuous-rating-tool-spec.md` §11 and `phase2-code-prompt.md`.
+
 ## Testing priorities
 Meaningful coverage of `sampling/`, `rating/`, `session/`, `export/`:
 sampling (mocked media: currentTime capture, monotonic index, start/stop with play/pause,

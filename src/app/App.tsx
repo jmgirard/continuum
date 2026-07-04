@@ -5,6 +5,7 @@ import { RatingView } from '../ui/RatingView';
 import { ConfirmDialog } from '../ui/ConfirmDialog';
 import { ResumePrompt } from '../session/ResumePrompt';
 import { useObjectUrl } from '../media/useObjectUrl';
+import { useFocusMode } from '../ui/useFocusMode';
 import { clearSession, loadSession } from '../session/sessionStore';
 import { SampleBuffer } from '../sampling/SampleBuffer';
 import { supportsVideoFrameCallback } from '../sampling/samplingEngine';
@@ -55,6 +56,10 @@ export function App(): JSX.Element {
   // choosing to resume it.
   const [resumeRecord, setResumeRecord] = useState<SessionRecord | null>(null);
   const [awaitingReselect, setAwaitingReselect] = useState(false);
+
+  // Focus mode: chrome fades while media plays, returns on activity/pause.
+  const [mediaPlaying, setMediaPlaying] = useState(false);
+  const chromeHidden = useFocusMode(mediaPlaying);
 
   // Object URL lifecycle (created + revoked) is owned by the hook.
   const url = useObjectUrl(selection?.file ?? null);
@@ -130,7 +135,7 @@ export function App(): JSX.Element {
 
   return (
     <div className="app">
-      <header className="app-header">
+      <header className={`app-header chrome-fade${chromeHidden ? ' chrome-fade--hidden' : ''}`}>
         <div className="app-brand">
           <div className="app-logo" aria-hidden="true" />
           <span className="app-brand-name">Continuum</span>
@@ -160,6 +165,13 @@ export function App(): JSX.Element {
           </>
         )}
 
+        {showRatingView && (
+          <span className={`focus-chip${mediaPlaying ? ' focus-chip--on' : ''}`}>
+            <span className="focus-chip-dot" aria-hidden="true" />
+            Focus mode
+          </span>
+        )}
+
         <button
           type="button"
           className="theme-toggle"
@@ -180,6 +192,8 @@ export function App(): JSX.Element {
           buffer={session.buffer}
           initialRating={session.initialRating}
           createdAt={session.createdAt}
+          chromeHidden={chromeHidden}
+          onPlayingChange={setMediaPlaying}
         />
       ) : (
         <main className="app-body">

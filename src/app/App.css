@@ -13,10 +13,19 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   padding: 0 20px;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
+}
+
+/* Focus mode: fade chrome during playback (returns on activity/pause) */
+.chrome-fade {
+  transition: opacity var(--motion-chrome-fade) var(--motion-ease);
+}
+.chrome-fade--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .app-brand {
@@ -24,6 +33,7 @@
   align-items: center;
   gap: 10px;
   min-width: 0;
+  flex-shrink: 1;
 }
 
 .app-logo {
@@ -126,6 +136,35 @@
   color: var(--fg);
 }
 
+/* Focus-mode status chip */
+.focus-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: var(--fg-3);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.focus-chip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--fg-3);
+}
+.focus-chip--on {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+.focus-chip--on .focus-chip-dot {
+  background: var(--accent);
+}
+
 /* Header action pill (Export) */
 .pill-btn {
   font-family: inherit;
@@ -175,4 +214,25 @@
   color: var(--fg);
   font-family: var(--font-mono);
   font-weight: 500;
+}
+
+/* Narrow viewports: shed non-essential header chrome so controls never collide */
+@media (max-width: 820px) {
+  .app-header {
+    gap: var(--space-2);
+    padding: 0 12px;
+  }
+  .app-subtitle,
+  .focus-chip {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .app-sep {
+    display: none;
+  }
+  .pill-toggle,
+  .pill-btn {
+    display: none;
+  }
 }

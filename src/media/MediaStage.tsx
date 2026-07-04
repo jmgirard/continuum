@@ -40,13 +40,14 @@ export function MediaStage({ media, attach, hasError, recording }: MediaStagePro
           ref={attach}
           className="stage-video"
           src={media.url}
+          aria-label={`Video: ${media.file.name}`}
           playsInline
           controlsList="nodownload"
           onContextMenu={(e) => e.preventDefault()}
         />
       ) : (
         <div className="stage-audio">
-          <audio ref={attach} src={media.url} />
+          <audio ref={attach} src={media.url} aria-label={`Audio: ${media.file.name}`} />
           <div className="stage-audio-badge">AUDIO</div>
         </div>
       )}

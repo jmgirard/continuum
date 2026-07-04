@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MediaStage } from '../media/MediaStage';
 import { TransportBar } from '../media/TransportBar';
 import { useMediaElement } from '../media/useMediaElement';
@@ -21,6 +21,10 @@ interface RatingViewProps {
   initialRating: number;
   /** When the session was created (stable key for autosave). */
   createdAt: string;
+  /** Focus mode: whether chrome should currently be faded. */
+  chromeHidden: boolean;
+  /** Report play/pause up so focus mode can track it. */
+  onPlayingChange: (playing: boolean) => void;
 }
 
 /**
@@ -42,9 +46,18 @@ export function RatingView({
   buffer,
   initialRating,
   createdAt,
+  chromeHidden,
+  onPlayingChange,
 }: RatingViewProps): JSX.Element {
   const controller = useMediaElement(transportLocked);
   useSpacebarPause(controller.toggle, controller.element !== null);
+
+  // Surface play/pause to the shell (drives focus mode); report paused on unmount.
+  const isPlaying = controller.state.isPlaying;
+  useEffect(() => {
+    onPlayingChange(isPlaying);
+  }, [isPlaying, onPlayingChange]);
+  useEffect(() => () => onPlayingChange(false), [onPlayingChange]);
 
   // The current rating value drives the slider display; its mirror in valueRef is
   // the true logical value the sampling engine reads (no render per sample).
@@ -85,13 +98,15 @@ export function RatingView({
             mode: sampling.mode,
           }}
         />
-        <TransportBar
-          state={controller.state}
-          transportLocked={transportLocked}
-          onToggle={controller.toggle}
-          onJumpBack={() => controller.seek(controller.state.currentTime - JUMP_BACK_SECONDS)}
-          jumpBackSeconds={JUMP_BACK_SECONDS}
-        />
+        <div className={`chrome-fade${chromeHidden ? ' chrome-fade--hidden' : ''}`}>
+          <TransportBar
+            state={controller.state}
+            transportLocked={transportLocked}
+            onToggle={controller.toggle}
+            onJumpBack={() => controller.seek(controller.state.currentTime - JUMP_BACK_SECONDS)}
+            jumpBackSeconds={JUMP_BACK_SECONDS}
+          />
+        </div>
       </div>
 
       <aside className="rating-col" aria-label="Rating control">
