@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{background:#101216;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    ::selection{background:rgba(91,141,239,.28)}
+    ::-webkit-scrollbar{width:10px;height:10px}
+    ::-webkit-scrollbar-thumb{background:#2a2f39;border-radius:6px;border:2px solid transparent;background-clip:padding-box}
+  </style>
+</helmet>
+<div style="{{ themeObj }}">
+<div style="width:100vw;height:100vh;overflow:hidden;background:var(--bg,#101216);color:var(--fg,#e6e8ec);font-family:'IBM Plex Sans',system-ui,sans-serif;display:flex;flex-direction:column;position:relative">
+
+  <!-- ============ 1D SCREEN ============ -->
+  <sc-if value="{{ is1d }}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+    <!-- header -->
+    <div style="height:52px;flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:0 20px;background:var(--surface,#171a20);border-bottom:1px solid var(--line,#2a2f39)">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <div style="width:17px;height:17px;border-radius:5px;background:var(--accent,#5b8def)"></div>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.01em">Continuum</span>
+        <span style="color:var(--fg-3,#6b7280);font-size:12px">/</span>
+        <span style="color:var(--fg-2,#9aa1ad);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Emotional Valence — Film Set A</span>
+      </div>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);letter-spacing:.06em">CLIP 2 / 5</span>
+        <div style="display:flex;gap:4px">
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--accent,#5b8def)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--accent,#5b8def)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--line,#2a2f39)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--line,#2a2f39)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--line,#2a2f39)"></span>
+        </div>
+      </div>
+      <div style="width:1px;height:20px;background:var(--line,#2a2f39);margin:0 4px"></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39)"><span style="width:5px;height:5px;border-radius:50%;background:var(--fg-3,#6b7280)"></span>Focus mode</span>
+        <span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;background:var(--accent,#5b8def);color:#fff">1D</span>
+      </div>
+    </div>
+
+    <!-- main -->
+    <div style="flex:1;display:flex;gap:18px;padding:18px;min-height:0">
+      <!-- media col -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-width:0">
+        <div style="flex:1;border-radius:12px;overflow:hidden;border:1px solid var(--line,#2a2f39);background:#07090c;position:relative;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,#0c0f13 0 13px,#0a0d10 13px 26px)">
+          <div style="position:absolute;inset:0;box-shadow:inset 0 0 90px rgba(0,0,0,.55)"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;color:#3a424e;font-family:'IBM Plex Mono',monospace">
+            <div style="width:54px;height:54px;border-radius:50%;border:1.5px solid #333b46;display:flex;align-items:center;justify-content:center">
+              <div style="width:0;height:0;border-left:15px solid #4a535f;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+            </div>
+            <div style="font-size:12px;letter-spacing:.18em">VIDEO · 1280 × 720</div>
+          </div>
+          <div style="position:absolute;left:14px;top:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a535f;letter-spacing:.08em">clip_02_interview.mp4</div>
+        </div>
+        <!-- transport (unlocked) -->
+        <div style="flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:0 14px;height:50px;border-radius:10px;background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39)">
+          <button style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line,#2a2f39);background:var(--surface-2,#1e222a);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;flex:0 0 auto">
+            <span style="width:3px;height:11px;background:var(--fg,#e6e8ec);border-radius:1px"></span>
+            <span style="width:3px;height:11px;background:var(--fg,#e6e8ec);border-radius:1px"></span>
+          </button>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--fg,#e6e8ec);flex:0 0 auto">00:42</span>
+          <div style="position:relative;flex:1;height:4px;border-radius:2px;background:var(--surface-2,#1e222a)">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:36%;background:var(--accent,#5b8def);border-radius:2px"></div>
+            <div style="position:absolute;left:36%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#fff;border:1px solid var(--line,#2a2f39);box-shadow:0 1px 4px rgba(0,0,0,.45)"></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--fg-3,#6b7280);flex:0 0 auto">−01:18</span>
+          <div style="width:1px;height:18px;background:var(--line,#2a2f39)"></div>
+          <div style="display:flex;align-items:center;gap:6px;color:var(--fg-3,#6b7280);font-size:10.5px;flex:0 0 auto">
+            <span style="font-family:'IBM Plex Mono',monospace;padding:2px 6px;border:1px solid var(--line,#2a2f39);border-radius:5px;font-size:9.5px;letter-spacing:.08em">SPACE</span>pause
+          </div>
+        </div>
+      </div>
+
+      <!-- rating col (1D slider) -->
+      <div style="flex:0 0 288px;background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 14px;display:flex;flex-direction:column;gap:12px">
+        <div style="text-align:center">
+          <div style="font-size:11px;letter-spacing:.16em;color:var(--fg-2,#9aa1ad);text-transform:uppercase;font-weight:500">Very positive</div>
+        </div>
+        <div style="flex:1;display:flex;gap:12px;justify-content:center;min-height:0">
+          <!-- ticks -->
+          <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding:1px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-3,#6b7280)">
+            <div style="display:flex;align-items:center;gap:7px"><span>8</span><span style="width:7px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>7</span><span style="width:5px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>6</span><span style="width:7px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>5</span><span style="width:5px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span style="color:var(--fg-2,#9aa1ad)">4</span><span style="width:9px;height:1px;background:var(--fg-3,#6b7280)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>3</span><span style="width:5px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>2</span><span style="width:7px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>1</span><span style="width:5px;height:1px;background:var(--line,#2a2f39)"></span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span>0</span><span style="width:7px;height:1px;background:var(--line,#2a2f39)"></span></div>
+          </div>
+          <!-- track -->
+          <div style="position:relative;width:46px;height:100%">
+            <div style="position:absolute;inset:0;border-radius:12px;border:1px solid var(--line,#2a2f39);background:linear-gradient(to top,#1f6cb0 0%,#4a86c5 24%,#8b9198 50%,#e0954e 76%,#d9702a 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)"></div>
+            <!-- faint trail below handle -->
+            <div style="position:absolute;left:50%;transform:translateX(-50%);top:29%;bottom:12px;width:5px;border-radius:5px;background:linear-gradient(to bottom,rgba(255,255,255,.35),rgba(255,255,255,0));opacity:.55"></div>
+            <!-- handle -->
+            <div style="position:absolute;left:50%;top:29%;transform:translate(-50%,-50%);width:64px;height:15px;border-radius:8px;background:#f6f8fb;border:1px solid rgba(0,0,0,.15);box-shadow:0 3px 10px rgba(0,0,0,.4),0 1px 0 rgba(255,255,255,.6) inset;display:flex;align-items:center;justify-content:center">
+              <div style="width:26px;height:2px;border-radius:2px;background:#9aa1ad"></div>
+            </div>
+            <!-- value bubble -->
+            <div style="position:absolute;left:calc(50% + 46px);top:29%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-start;background:var(--raised,#20252e);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:5px 9px;box-shadow:0 4px 14px rgba(0,0,0,.35);white-space:nowrap">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:500;color:var(--fg,#e6e8ec);line-height:1">6.2</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280);letter-spacing:.05em">/ 8.0</span>
+            </div>
+          </div>
+          <!-- axis label -->
+          <div style="display:flex;align-items:center;justify-content:center;width:16px">
+            <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:.22em;color:var(--fg-3,#6b7280);text-transform:uppercase">Valence</span>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:11px;letter-spacing:.16em;color:var(--fg-2,#9aa1ad);text-transform:uppercase;font-weight:500">Very negative</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding-top:2px;border-top:1px solid var(--line,#2a2f39);color:var(--fg-3,#6b7280);font-size:10px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em">
+          <span>DRAG</span><span style="opacity:.4">·</span><span>↑ ↓</span><span style="opacity:.4">·</span><span>JOYSTICK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ 2D SCREEN ============ -->
+  <sc-if value="{{ is2d }}">
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+    <!-- header -->
+    <div style="height:52px;flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:0 20px;background:var(--surface,#171a20);border-bottom:1px solid var(--line,#2a2f39)">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <div style="width:17px;height:17px;border-radius:5px;background:var(--accent,#5b8def)"></div>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.01em">Continuum</span>
+        <span style="color:var(--fg-3,#6b7280);font-size:12px">/</span>
+        <span style="color:var(--fg-2,#9aa1ad);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Interpersonal Circumplex — Session B</span>
+      </div>
+      <div style="flex:1"></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);letter-spacing:.06em">CLIP 3 / 4</span>
+        <div style="display:flex;gap:4px">
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--accent,#5b8def)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--accent,#5b8def)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--accent,#5b8def)"></span>
+          <span style="width:16px;height:3px;border-radius:2px;background:var(--line,#2a2f39)"></span>
+        </div>
+      </div>
+      <div style="width:1px;height:20px;background:var(--line,#2a2f39);margin:0 4px"></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39)"><span style="width:5px;height:5px;border-radius:50%;background:var(--fg-3,#6b7280)"></span>Focus mode</span>
+        <span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;background:var(--accent,#5b8def);color:#fff">2D</span>
+      </div>
+    </div>
+
+    <!-- main -->
+    <div style="flex:1;display:flex;gap:18px;padding:18px;min-height:0">
+      <!-- media col -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-width:0">
+        <div style="flex:1;border-radius:12px;overflow:hidden;border:1px solid var(--line,#2a2f39);background:#07090c;position:relative;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,#0c0f13 0 13px,#0a0d10 13px 26px)">
+          <div style="position:absolute;inset:0;box-shadow:inset 0 0 90px rgba(0,0,0,.55)"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;color:#3a424e;font-family:'IBM Plex Mono',monospace">
+            <div style="width:54px;height:54px;border-radius:50%;border:1.5px solid #333b46;display:flex;align-items:center;justify-content:center">
+              <div style="width:0;height:0;border-left:15px solid #4a535f;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+            </div>
+            <div style="font-size:12px;letter-spacing:.18em">VIDEO · 1280 × 720</div>
+          </div>
+          <div style="position:absolute;left:14px;top:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#4a535f;letter-spacing:.08em">dyad_04_conversation.mp4</div>
+        </div>
+        <!-- transport (LOCKED variant) -->
+        <div style="flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:0 14px;height:50px;border-radius:10px;background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39)">
+          <button style="width:32px;height:32px;border-radius:50%;border:1px solid var(--line,#2a2f39);background:var(--surface-2,#1e222a);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;flex:0 0 auto">
+            <span style="width:3px;height:11px;background:var(--fg,#e6e8ec);border-radius:1px"></span>
+            <span style="width:3px;height:11px;background:var(--fg,#e6e8ec);border-radius:1px"></span>
+          </button>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--fg,#e6e8ec);flex:0 0 auto">01:32</span>
+          <div style="position:relative;flex:1;height:4px;border-radius:2px;background:var(--surface-2,#1e222a);opacity:.6">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:58%;background:var(--fg-3,#6b7280);border-radius:2px"></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--fg-3,#6b7280);flex:0 0 auto">−01:06</span>
+          <div style="width:1px;height:18px;background:var(--line,#2a2f39)"></div>
+          <div style="display:flex;align-items:center;gap:7px;color:var(--fg-3,#6b7280);font-size:10.5px;flex:0 0 auto">
+            <span style="display:inline-flex;width:13px;height:13px;border:1.4px solid var(--fg-3,#6b7280);border-radius:3px;position:relative">
+              <span style="position:absolute;left:50%;top:-5px;transform:translateX(-50%);width:8px;height:8px;border:1.4px solid var(--fg-3,#6b7280);border-bottom:none;border-radius:6px 6px 0 0"></span>
+            </span>
+            <span style="letter-spacing:.06em">Seek disabled</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- drag divider -->
+      <div onPointerDown="{{ startDrag }}" style="flex:0 0 auto;width:8px;cursor:col-resize;display:flex;align-items:center;justify-content:center;align-self:stretch">
+        <div style="width:4px;height:46px;border-radius:3px;background:var(--line,#2a2f39)"></div>
+      </div>
+      <!-- circumplex col -->
+      <div ref="{{ cpRef }}" style="flex:0 0 {{ ratingPct }}%;min-width:0;height:100%;display:flex;align-items:center;justify-content:center">
+        <div style="{{ cpStyle }}">
+          <!-- axis end labels -->
+          <div style="position:absolute;top:2px;left:26px;right:26px;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2,#9aa1ad);font-weight:500">Dominant</div>
+          <div style="position:absolute;bottom:2px;left:26px;right:26px;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2,#9aa1ad);font-weight:500">Submissive</div>
+          <div style="position:absolute;left:-4px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;rotate:180deg;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2,#9aa1ad);font-weight:500">Cold</div>
+          <div style="position:absolute;right:-4px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2,#9aa1ad);font-weight:500">Warm</div>
+
+          <!-- plot -->
+          <div style="position:absolute;inset:26px;border-radius:12px;border:1px solid var(--line,#2a2f39);overflow:hidden;background-color:var(--surface,#171a20);background-image:radial-gradient(85% 85% at 100% 0%,rgba(224,143,74,.14),transparent 62%),radial-gradient(85% 85% at 0% 100%,rgba(31,108,176,.14),transparent 62%)">
+            <!-- rings -->
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:90%;height:90%;border-radius:50%;border:1px solid var(--line,#2a2f39);opacity:.5"></div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60%;height:60%;border-radius:50%;border:1px solid var(--line,#2a2f39);opacity:.5"></div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30%;height:30%;border-radius:50%;border:1px solid var(--line,#2a2f39);opacity:.5"></div>
+            <!-- crosshair -->
+            <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line,#2a2f39)"></div>
+            <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line,#2a2f39)"></div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;border:1px solid var(--fg-3,#6b7280)"></div>
+            <!-- quadrant region labels -->
+            <div style="position:absolute;right:9%;top:11%;font-size:9.5px;letter-spacing:.06em;color:var(--fg-3,#6b7280);text-align:right;line-height:1.3">Gregarious·<br>Extraverted</div>
+            <div style="position:absolute;left:9%;top:11%;font-size:9.5px;letter-spacing:.06em;color:var(--fg-3,#6b7280);line-height:1.3">Arrogant·<br>Calculating</div>
+            <div style="position:absolute;left:9%;bottom:11%;font-size:9.5px;letter-spacing:.06em;color:var(--fg-3,#6b7280);line-height:1.3">Aloof·<br>Introverted</div>
+            <div style="position:absolute;right:9%;bottom:11%;font-size:9.5px;letter-spacing:.06em;color:var(--fg-3,#6b7280);text-align:right;line-height:1.3">Unassuming·<br>Ingenuous</div>
+            <!-- trail -->
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--accent,#5b8def);opacity:.14"></div>
+            <div style="position:absolute;left:56%;top:44.5%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:var(--accent,#5b8def);opacity:.22"></div>
+            <div style="position:absolute;left:61.5%;top:39%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:var(--accent,#5b8def);opacity:.38"></div>
+            <!-- point -->
+            <div style="position:absolute;left:67%;top:34%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--accent,#5b8def);border:2.5px solid #fff;box-shadow:0 0 0 4px rgba(91,141,239,.18),0 4px 14px rgba(0,0,0,.5)"></div>
+            <!-- value chip -->
+            <div style="position:absolute;left:50%;top:12px;transform:translateX(-50%);display:flex;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-2,#9aa1ad);background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:7px;padding:5px 10px;line-height:1.55;white-space:nowrap">
+              <span>communion&nbsp;<span style="color:var(--fg,#e6e8ec)">+0.42</span></span><span>agency&nbsp;<span style="color:var(--fg,#e6e8ec)">+0.31</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ SETTINGS SCREEN ============ -->
+  <sc-if value="{{ isSettings }}">
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+    <div style="height:52px;flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:0 20px;background:var(--surface,#171a20);border-bottom:1px solid var(--line,#2a2f39)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:17px;height:17px;border-radius:5px;background:var(--accent,#5b8def)"></div>
+        <span style="font-size:13px;font-weight:600">Continuum</span>
+        <span style="color:var(--fg-3,#6b7280);font-size:12px">/</span>
+        <span style="color:var(--fg-2,#9aa1ad);font-size:12.5px">Study configuration</span>
+      </div>
+      <div style="flex:1"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280);letter-spacing:.1em;text-transform:uppercase">Author mode · not shown to participants</span>
+    </div>
+
+    <div style="flex:1;display:flex;min-height:0">
+      <!-- form -->
+      <div style="flex:1;overflow:auto;padding:24px 28px;display:flex;justify-content:center">
+       <div style="width:100%;max-width:540px;display:flex;flex-direction:column;gap:16px">
+
+        <!-- scale & mode -->
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">01</span>Scale &amp; mode</div>
+          <div style="display:flex;gap:14px">
+            <div style="flex:1">
+              <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Rating mode</div>
+              <div style="display:flex;padding:3px;background:var(--surface-2,#1e222a);border-radius:9px;border:1px solid var(--line,#2a2f39)">
+                <span style="flex:1;text-align:center;padding:6px;font-size:12px;border-radius:7px;background:var(--accent,#5b8def);color:#fff;font-weight:600">1D slider</span>
+                <span style="flex:1;text-align:center;padding:6px;font-size:12px;border-radius:7px;color:var(--fg-2,#9aa1ad)">2D circumplex</span>
+              </div>
+            </div>
+            <div style="width:80px">
+              <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Steps</div>
+              <div style="background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--fg,#e6e8ec)">9</div>
+            </div>
+            <div style="width:120px">
+              <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Range</div>
+              <div style="display:flex;gap:6px">
+                <div style="flex:1;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--fg,#e6e8ec);text-align:center">0</div>
+                <div style="flex:1;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--fg,#e6e8ec);text-align:center">8</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- labels -->
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">02</span>Labels</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Upper label</div>
+              <div style="background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--fg,#e6e8ec)">Very positive</div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Lower label</div>
+              <div style="background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--fg,#e6e8ec)">Very negative</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- palette -->
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">03</span>Palette</div>
+          <div style="font-size:11px;color:var(--fg-3,#6b7280);margin-bottom:12px">Colourblind-safe presets. The custom option stays available.</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:12px;padding:8px;border:1.5px solid var(--accent,#5b8def);background:rgba(91,141,239,.07);border-radius:9px">
+              <div style="width:76px;height:16px;border-radius:5px;background:linear-gradient(to right,#1f6cb0,#8b9198,#d9702a)"></div>
+              <span style="font-size:12.5px;font-weight:500">Blue → Grey → Orange</span>
+              <span style="font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">CVD-SAFE</span>
+              <span style="flex:1"></span>
+              <span style="width:16px;height:16px;border-radius:50%;background:var(--accent,#5b8def);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px">✓</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:8px;border:1px solid var(--line,#2a2f39);border-radius:9px">
+              <div style="width:76px;height:16px;border-radius:5px;background:linear-gradient(to right,#00204d,#575d6d,#ffea46)"></div>
+              <span style="font-size:12.5px;color:var(--fg-2,#9aa1ad)">Cividis</span>
+              <span style="font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">CVD-SAFE</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:8px;border:1px solid var(--line,#2a2f39);border-radius:9px">
+              <div style="width:76px;height:16px;border-radius:5px;background:linear-gradient(to right,#440154,#21918c,#fde725)"></div>
+              <span style="font-size:12.5px;color:var(--fg-2,#9aa1ad)">Viridis</span>
+              <span style="font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">CVD-SAFE</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px;border:1px dashed var(--line,#2a2f39);border-radius:9px">
+              <span style="font-size:12.5px;color:var(--fg-2,#9aa1ad)">Custom 3-colour</span>
+              <span style="flex:1"></span>
+              <span style="width:22px;height:22px;border-radius:6px;background:#1f6cb0;border:1px solid rgba(255,255,255,.15)"></span>
+              <span style="width:22px;height:22px;border-radius:6px;background:#8b9198;border:1px solid rgba(255,255,255,.15)"></span>
+              <span style="width:22px;height:22px;border-radius:6px;background:#d9702a;border:1px solid rgba(255,255,255,.15)"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- control behavior -->
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">04</span>Control behaviour</div>
+          <div style="margin-bottom:14px">
+            <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:8px">Return behaviour</div>
+            <div style="display:flex;padding:3px;background:var(--surface-2,#1e222a);border-radius:9px;border:1px solid var(--line,#2a2f39)">
+              <span style="flex:1;text-align:center;padding:6px;font-size:12px;border-radius:7px;color:var(--fg-2,#9aa1ad)">Spring to centre</span>
+              <span style="flex:1;text-align:center;padding:6px;font-size:12px;border-radius:7px;background:var(--accent,#5b8def);color:#fff;font-weight:600">Stay put</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:18px">
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280)">Joystick gain</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">1.4×</span></div>
+              <div style="position:relative;height:4px;border-radius:2px;background:var(--surface-2,#1e222a)"><div style="position:absolute;left:0;top:0;bottom:0;width:55%;background:var(--accent,#5b8def);border-radius:2px"></div><div style="position:absolute;left:55%;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:#fff;border:1px solid var(--line,#2a2f39);box-shadow:0 1px 3px rgba(0,0,0,.4)"></div></div>
+            </div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280)">Dead-zone</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">0.08</span></div>
+              <div style="position:relative;height:4px;border-radius:2px;background:var(--surface-2,#1e222a)"><div style="position:absolute;left:0;top:0;bottom:0;width:22%;background:var(--accent,#5b8def);border-radius:2px"></div><div style="position:absolute;left:22%;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:#fff;border:1px solid var(--line,#2a2f39);box-shadow:0 1px 3px rgba(0,0,0,.4)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- transport + instructions -->
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">05</span>Transport &amp; instructions</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line,#2a2f39)">
+            <div><div style="font-size:12.5px">Lock transport</div><div style="font-size:11px;color:var(--fg-3,#6b7280)">Disable scrubbing &amp; seek for data integrity</div></div>
+            <div style="width:38px;height:22px;border-radius:999px;background:var(--accent,#5b8def);position:relative"><div style="position:absolute;right:2px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0">
+            <div><div style="font-size:12.5px">Allow pause (spacebar)</div><div style="font-size:11px;color:var(--fg-3,#6b7280)">Participant may pause playback</div></div>
+            <div style="width:38px;height:22px;border-radius:999px;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);position:relative"><div style="position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--fg-3,#6b7280)"></div></div>
+          </div>
+          <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin:6px 0 8px">Instruction text</div>
+          <div style="background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px;padding:10px 11px;font-size:12.5px;color:var(--fg-2,#9aa1ad);line-height:1.6;min-height:64px">Watch the clip and move the slider up or down to report how <span style="color:var(--fg,#e6e8ec)">positive or negative</span> you feel, moment to moment. There are no right answers — keep responding continuously.</div>
+        </div>
+       </div>
+      </div>
+
+      <!-- live preview -->
+      <div style="flex:0 0 340px;border-left:1px solid var(--line,#2a2f39);background:var(--bg,#101216);display:flex;flex-direction:column">
+        <div style="height:38px;flex:0 0 auto;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(--line,#2a2f39);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3,#6b7280)">Live preview</div>
+        <div style="flex:1;display:flex;align-items:stretch;justify-content:center;padding:22px;gap:0;min-height:0">
+          <div style="flex:1;max-width:220px;background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:12px;padding:16px 12px;display:flex;flex-direction:column;gap:10px">
+            <div style="text-align:center;font-size:10px;letter-spacing:.14em;color:var(--fg-2,#9aa1ad);text-transform:uppercase">Very positive</div>
+            <div style="flex:1;display:flex;justify-content:center;gap:10px;min-height:0">
+              <div style="display:flex;flex-direction:column;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280);padding:1px 0">
+                <span>8</span><span>6</span><span>4</span><span>2</span><span>0</span>
+              </div>
+              <div style="position:relative;width:38px;height:100%">
+                <div style="position:absolute;inset:0;border-radius:10px;border:1px solid var(--line,#2a2f39);background:linear-gradient(to top,#1f6cb0,#8b9198 50%,#d9702a)"></div>
+                <div style="position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:52px;height:13px;border-radius:7px;background:#f6f8fb;border:1px solid rgba(0,0,0,.15);box-shadow:0 2px 8px rgba(0,0,0,.4)"></div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:10px;letter-spacing:.14em;color:var(--fg-2,#9aa1ad);text-transform:uppercase">Very negative</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ DESIGN SYSTEM SHEET ============ -->
+  <sc-if value="{{ isTokens }}">
+  <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+    <div style="height:52px;flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:0 20px;background:var(--surface,#171a20);border-bottom:1px solid var(--line,#2a2f39)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:17px;height:17px;border-radius:5px;background:var(--accent,#5b8def)"></div>
+        <span style="font-size:13px;font-weight:600">Continuum</span>
+        <span style="color:var(--fg-3,#6b7280);font-size:12px">/</span>
+        <span style="color:var(--fg-2,#9aa1ad);font-size:12.5px">Design system</span>
+      </div>
+      <div style="flex:1"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280);letter-spacing:.1em;text-transform:uppercase">Reference sheet · v0.1</span>
+    </div>
+
+    <div style="flex:1;overflow:auto;padding:28px">
+     <div style="max-width:940px;margin:0 auto;display:flex;flex-direction:column;gap:26px;padding-bottom:80px">
+
+      <!-- intro -->
+      <div>
+        <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px">Continuum — rating instrument tokens</div>
+        <div style="font-size:13px;color:var(--fg-2,#9aa1ad);line-height:1.6;max-width:640px">A quiet, research-grade system. Neutral greys carry all chrome; saturated colour is reserved for the rating scale, so the participant reads colour as meaning. Every surface is a CSS custom property with a dark and light value.</div>
+      </div>
+
+      <!-- COLOUR TOKENS -->
+      <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:14px;padding:20px 22px">
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">01</span><span style="font-size:14px;font-weight:600">Colour tokens</span></div>
+        <div style="font-size:11.5px;color:var(--fg-3,#6b7280);margin-bottom:16px">Neutral UI. Dark is the default (better for watching video); light is required and derived.</div>
+        <!-- header row -->
+        <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;padding:0 4px 8px;border-bottom:1px solid var(--line,#2a2f39);font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3,#6b7280)">
+          <span>Token</span><span>Dark</span><span>Light</span><span>Usage</span>
+        </div>
+        <!-- rows -->
+        <div style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--bg</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#101216;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#101216</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#eceef1;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#eceef1</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">App background</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--surface</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#171a20;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#171a20</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#ffffff;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#ffffff</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Panels, header, cards</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--surface-2</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#1e222a;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#1e222a</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#e8eaee;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#e8eaee</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Insets, tracks, controls</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--raised</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#20252e;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#20252e</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#ffffff;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#ffffff</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Popovers, value readout</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--line</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#2a2f39;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#2a2f39</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#dbdee3;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#dbdee3</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Borders, ticks, grid lines</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--fg</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#e6e8ec;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#e6e8ec</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#191c22;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#191c22</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Primary text</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--fg-2</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#9aa1ad;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#9aa1ad</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#525963;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#525963</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Secondary text, labels</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--fg-3</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#6b7280;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#6b7280</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#8a919b;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#8a919b</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Tertiary, ticks, hints</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:12px;align-items:center;padding:9px 4px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--fg,#e6e8ec)">--accent</span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#5b8def;border:1px solid rgba(255,255,255,.12)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#5b8def</span></span>
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:6px;background:#5b8def;border:1px solid rgba(0,0,0,.14)"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg-2,#9aa1ad)">#5b8def</span></span>
+            <span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Handle / point, selection</span>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--surface-2,#1e222a);border-radius:10px">
+          <span style="width:20px;height:20px;border-radius:5px;flex:0 0 auto;background:linear-gradient(135deg,#1f6cb0,#8b9198,#d9702a)"></span>
+          <span style="font-size:12px;color:var(--fg-2,#9aa1ad);line-height:1.55">Chrome stays neutral so the scale can be loud. <span style="color:var(--fg,#e6e8ec)">Accent is the only chromatic UI colour</span>, and only on the live control — everything else is grey.</span>
+        </div>
+      </div>
+
+      <!-- SCALE PALETTES -->
+      <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:14px;padding:20px 22px">
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">02</span><span style="font-size:14px;font-weight:600">Rating scale palettes</span></div>
+        <div style="font-size:11.5px;color:var(--fg-3,#6b7280);margin-bottom:16px">Defaults are perceptually-uniform and colourblind-safe. The classic red–yellow–green scale is excluded — it fails the most common CVD.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="border:1px solid var(--accent,#5b8def);background:rgba(91,141,239,.06);border-radius:11px;padding:12px 14px">
+            <div style="height:34px;border-radius:8px;background:linear-gradient(to right,#1f6cb0,#4a86c5,#8b9198,#e0954e,#d9702a);margin-bottom:10px"></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:12.5px;font-weight:600">Blue → Grey → Orange</span><span style="font-size:8.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">DEFAULT · CVD-SAFE</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">#1f6cb0 · #8b9198 · #d9702a — diverging</div>
+          </div>
+          <div style="border:1px solid var(--line,#2a2f39);border-radius:11px;padding:12px 14px">
+            <div style="height:34px;border-radius:8px;background:linear-gradient(to right,#00204d,#575d6d,#a69d75,#ffea46);margin-bottom:10px"></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:12.5px;font-weight:600;color:var(--fg-2,#9aa1ad)">Cividis</span><span style="font-size:8.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">CVD-SAFE</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">#00204d · #575d6d · #ffea46 — sequential</div>
+          </div>
+          <div style="border:1px solid var(--line,#2a2f39);border-radius:11px;padding:12px 14px">
+            <div style="height:34px;border-radius:8px;background:linear-gradient(to right,#440154,#3b528b,#21918c,#5ec962,#fde725);margin-bottom:10px"></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:12.5px;font-weight:600;color:var(--fg-2,#9aa1ad)">Viridis</span><span style="font-size:8.5px;font-family:'IBM Plex Mono',monospace;color:var(--fg-3,#6b7280);border:1px solid var(--line,#2a2f39);padding:1px 5px;border-radius:4px">CVD-SAFE</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">#440154 · #21918c · #fde725 — sequential</div>
+          </div>
+          <div style="border:1px dashed var(--line,#2a2f39);border-radius:11px;padding:12px 14px">
+            <div style="height:34px;border-radius:8px;background:linear-gradient(to right,#1f6cb0,#8b9198,#d9702a);margin-bottom:10px"></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:12.5px;font-weight:600;color:var(--fg-2,#9aa1ad)">Custom 3-colour</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">Researcher-defined stops — not contrast-guaranteed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TYPOGRAPHY -->
+      <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:14px;padding:20px 22px">
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">03</span><span style="font-size:14px;font-weight:600">Typography</span></div>
+        <div style="font-size:11.5px;color:var(--fg-3,#6b7280);margin-bottom:16px"><span style="color:var(--fg,#e6e8ec)">IBM Plex Sans</span> for interface. <span style="color:var(--fg,#e6e8ec)">IBM Plex Mono</span> for all numerics — values, ticks, timecodes, filenames.</div>
+        <div style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-size:24px;font-weight:600;letter-spacing:-.01em">Display · study title</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">24 / 600 · Sans</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-size:14px;font-weight:600">Section heading</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">14 / 600 · Sans</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-size:13px">Body &amp; instruction text — readable at a glance while attention is on the video.</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">13 / 400 · Sans</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--fg-2,#9aa1ad)">Scale &amp; axis labels</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">11 · .16em · upper</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line,#2a2f39)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500">6.2 <span style="font-size:11px;color:var(--fg-3,#6b7280)">/ 8.0</span></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">Numeric · Mono</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 190px;gap:16px;align-items:baseline;padding:12px 4px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280)">Micro · chips · ticks · timecode</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280)">10 · Mono · upper</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPACING & RADIUS + MOTION -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:14px;padding:20px 22px">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">04</span><span style="font-size:14px;font-weight:600">Spacing &amp; radius</span></div>
+          <div style="font-size:11.5px;color:var(--fg-3,#6b7280);margin-bottom:16px">Compact, even rhythm on a 4px base.</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:20px">
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">4</span><span style="height:10px;width:4px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">8</span><span style="height:10px;width:8px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">12</span><span style="height:10px;width:12px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">16</span><span style="height:10px;width:16px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">18</span><span style="height:10px;width:18px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--fg-3,#6b7280);width:34px">28</span><span style="height:10px;width:28px;background:var(--accent,#5b8def);border-radius:2px"></span></div>
+          </div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3,#6b7280);margin-bottom:10px">Corner radius</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:40px;height:40px;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:6px"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280)">6 · chips</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:40px;height:40px;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:8px"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280)">8 · inputs</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:40px;height:40px;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:12px"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280)">12 · panels</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:40px;height:40px;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:999px"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fg-3,#6b7280)">full · pills</span></div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface,#171a20);border:1px solid var(--line,#2a2f39);border-radius:14px;padding:20px 22px">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--fg-3,#6b7280)">05</span><span style="font-size:14px;font-weight:600">Motion — the damped indicator</span></div>
+          <div style="font-size:11.5px;color:var(--fg-3,#6b7280);margin-bottom:16px">Instrument-grade: smoothed, precise, never twitchy. Sampling is independent of smoothing.</div>
+          <div style="display:flex;flex-direction:column;gap:1px;border:1px solid var(--line,#2a2f39);border-radius:10px;overflow:hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Follow spring</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">critically damped, no overshoot</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Settle time constant</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">≈ 90 ms</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Ease</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">cubic-bezier(.22,.61,.36,1)</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Sample rate</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">30–60 Hz, continuous</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Trail decay</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">~300 ms fade, optional</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:var(--surface-2,#1e222a)"><span style="font-size:12px;color:var(--fg-2,#9aa1ad)">Chrome fade (focus mode)</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--fg,#e6e8ec)">180 ms ease</span></div>
+          </div>
+          <div style="margin-top:14px;font-size:11.5px;color:var(--fg-3,#6b7280);line-height:1.55">No bounce, no elastic. The handle should feel weighted and deliberate — a physical dial, not a UI toggle.</div>
+        </div>
+      </div>
+
+     </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ FLOATING SWITCHER (reviewer chrome) ============ -->
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:4px;align-items:center;background:var(--surface-2,#1e222a);border:1px solid var(--line,#2a2f39);border-radius:999px;padding:5px;box-shadow:0 8px 30px rgba(0,0,0,.5);z-index:50">
+    <span style="display:flex;align-items:center;gap:5px;padding:0 8px 0 6px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3,#6b7280);white-space:nowrap">Review</span>
+    <span style="width:1px;height:18px;background:var(--line,#2a2f39);margin-right:1px"></span>
+    <button onClick="{{ show1d }}" style="{{ seg1 }}">1D slider</button>
+    <button onClick="{{ show2d }}" style="{{ seg2 }}">2D circumplex</button>
+    <button onClick="{{ showSettings }}" style="{{ segS }}">Settings</button>
+    <button onClick="{{ showTokens }}" style="{{ segT }}">System</button>
+    <span style="width:1px;height:18px;background:var(--line,#2a2f39);margin:0 3px"></span>
+    <button onClick="{{ toggleTheme }}" style="padding:6px 12px;font-size:12px;border:none;border-radius:999px;background:transparent;color:var(--fg-2,#9aa1ad);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--fg-2,#9aa1ad)"></span>{{ themeLabel }}
+    </button>
+    <span style="width:1px;height:18px;background:var(--line,#2a2f39);margin:0 3px"></span>
+    <button onClick="{{ closeNav }}" title="Hide review controls" style="width:28px;height:28px;border:none;border-radius:999px;background:transparent;color:var(--fg-3,#6b7280);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1">×</button>
+  </div>
+  </sc-if>
+  <sc-if value="{{ navClosed }}">
+  <button onClick="{{ openNav }}" title="Show review controls" style="position:fixed;right:20px;bottom:20px;width:34px;height:34px;border:1px solid var(--line,#2a2f39);border-radius:999px;background:var(--surface-2,#1e222a);color:var(--fg-3,#6b7280);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.5);z-index:50;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.02em">⋯</button>
+  </sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;},
+  &quot;theme&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;dark&quot;, &quot;light&quot;], &quot;default&quot;: &quot;dark&quot;, &quot;tsType&quot;: &quot;'dark' | 'light'&quot;, &quot;section&quot;: &quot;Appearance&quot;},
+  &quot;mode&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;1d&quot;, &quot;2d&quot;, &quot;settings&quot;], &quot;default&quot;: &quot;1d&quot;, &quot;tsType&quot;: &quot;'1d' | '2d' | 'settings'&quot;, &quot;section&quot;: &quot;Appearance&quot;},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#5b8def&quot;, &quot;options&quot;: [&quot;#5b8def&quot;, &quot;#57b894&quot;, &quot;#c9a24b&quot;, &quot;#c77dff&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Appearance&quot;}
+}">
+class Component extends DCLogic {
+  state = { screen: null, theme: null, ratingPct: 40, cpSize: 0, navOpen: true };
+  cpRef = React.createRef();
+  componentDidMount() {
+    this._ro = new ResizeObserver(() => this.measureCp());
+    if (this.cpRef.current) { this._ro.observe(this.cpRef.current); this._observed = this.cpRef.current; }
+    this.measureCp();
+    window.addEventListener('resize', this._onWin = () => this.measureCp());
+  }
+  componentDidUpdate() {
+    if (this.cpRef.current && this._observed !== this.cpRef.current) {
+      if (this._observed) { try { this._ro.unobserve(this._observed); } catch (e) {} }
+      this._ro.observe(this.cpRef.current);
+      this._observed = this.cpRef.current;
+      this.measureCp();
+    }
+  }
+  componentWillUnmount() {
+    if (this._ro) this._ro.disconnect();
+    window.removeEventListener('resize', this._onWin);
+  }
+  measureCp() {
+    const el = this.cpRef.current;
+    if (!el) return;
+    const s = Math.min(el.clientWidth, el.clientHeight);
+    if (s > 0 && Math.abs(s - this.state.cpSize) > 1) this.setState({ cpSize: s });
+  }
+  startDrag = (e) => {
+    e.preventDefault();
+    const row = e.currentTarget.parentElement;
+    const move = (ev) => {
+      const r = row.getBoundingClientRect();
+      let pct = ((r.right - ev.clientX) / r.width) * 100;
+      pct = Math.max(28, Math.min(50, pct));
+      this.setState({ ratingPct: pct });
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  };
+  renderVals() {
+    const screen = this.state.screen ?? this.props.mode ?? '1d';
+    const theme = this.state.theme ?? this.props.theme ?? 'dark';
+    const accent = this.props.accent || '#5b8def';
+    const dark = {'--bg':'#101216','--surface':'#171a20','--surface-2':'#1e222a','--raised':'#20252e','--line':'#2a2f39','--fg':'#e6e8ec','--fg-2':'#9aa1ad','--fg-3':'#6b7280'};
+    const light = {'--bg':'#eceef1','--surface':'#ffffff','--surface-2':'#e8eaee','--raised':'#ffffff','--line':'#dbdee3','--fg':'#191c22','--fg-2':'#525963','--fg-3':'#8a919b'};
+    const themeObj = Object.assign({display:'contents'}, theme==='dark'?dark:light, {'--accent':accent});
+    const seg = (on)=>({flex:'0 0 auto',padding:'6px 13px',fontSize:'12px',cursor:'pointer',border:'none',borderRadius:'999px',fontFamily:'inherit',background:on?'var(--accent,#5b8def)':'transparent',color:on?'#fff':'var(--fg-2,#9aa1ad)',fontWeight:on?'600':'400'});
+    const cp = this.state.cpSize;
+    const cpStyle = cp > 0
+      ? { width: cp + 'px', height: cp + 'px', position: 'relative', padding: '26px' }
+      : { width: '100%', height: '100%', maxWidth: '100%', position: 'relative', padding: '26px' };
+    return {
+      screen,
+      ratingPct: this.state.ratingPct,
+      startDrag: this.startDrag,
+      cpStyle,
+      cpRef: this.cpRef,
+      navOpen: this.state.navOpen,
+      navClosed: !this.state.navOpen,
+      openNav: () => this.setState({ navOpen: true }),
+      closeNav: () => this.setState({ navOpen: false }),
+      is1d: screen==='1d', is2d: screen==='2d', isSettings: screen==='settings', isTokens: screen==='tokens',
+      themeObj,
+      themeLabel: theme==='dark' ? 'Dark' : 'Light',
+      seg1: seg(screen==='1d'), seg2: seg(screen==='2d'), segS: seg(screen==='settings'), segT: seg(screen==='tokens'),
+      showTokens: ()=>this.setState({screen:'tokens'}),
+      show1d: ()=>this.setState({screen:'1d'}),
+      show2d: ()=>this.setState({screen:'2d'}),
+      showSettings: ()=>this.setState({screen:'settings'}),
+      toggleTheme: ()=>this.setState(s=>({theme:(s.theme ?? this.props.theme ?? 'dark')==='dark'?'light':'dark'})),
+    };
+  }
+}
+</script>
+</body>
+</html>
