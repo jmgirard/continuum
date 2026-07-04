@@ -1,0 +1,7 @@
+dist
+coverage
+node_modules
+design-handoff
+LICENSE
+*.md
+package-lock.json
