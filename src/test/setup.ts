@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom/vitest';
+// jsdom has no IndexedDB; provide one so autosave/resume code runs in tests.
+import 'fake-indexeddb/auto';
 import { afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 

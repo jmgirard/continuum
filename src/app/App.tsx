@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from './useTheme';
 import { FileDropZone } from '../media/FileDropZone';
 import { RatingView } from '../ui/RatingView';
 import { ConfirmDialog } from '../ui/ConfirmDialog';
+import { ResumePrompt } from '../session/ResumePrompt';
 import { useObjectUrl } from '../media/useObjectUrl';
-import { DEFAULT_SCALE } from '../config/scale';
+import { clearSession, loadSession } from '../session/sessionStore';
+import { SampleBuffer } from '../sampling/SampleBuffer';
+import { DEFAULT_SCALE, initialValue, type ScaleConfig } from '../config/scale';
+import { quantize } from '../rating/scaleModel';
+import type { SessionRecord } from '../session/types';
 import type { LoadedMedia, MediaKind } from '../media/types';
 import './App.css';
 
@@ -13,24 +18,99 @@ interface Selection {
   kind: MediaKind;
 }
 
+/** The in-progress annotation: its buffer, scale, and identity. */
+interface ActiveSession {
+  buffer: SampleBuffer;
+  scale: ScaleConfig;
+  initialRating: number;
+  createdAt: string;
+  mediaReference: string;
+}
+
+function freshSession(file: File, scale: ScaleConfig): ActiveSession {
+  return {
+    buffer: new SampleBuffer(),
+    scale,
+    initialRating: quantize(scale, initialValue(scale)),
+    createdAt: new Date().toISOString(),
+    mediaReference: file.name,
+  };
+}
+
 /**
- * Application shell and top-level screen switch.
- *
- * Milestone 2: Browse-to-load a local media file, then show the rating screen
- * with a working media panel and transport (play/pause, spacebar, seek, and the
- * transport-lock variant). The rating slider, sampling, autosave, and export
- * arrive in later milestones.
+ * Application shell and top-level screen switch: browse → rate. Owns the session
+ * lifecycle so the sample buffer can be persisted (autosave) and restored
+ * (resume). The rating slider, sampling, autosave, and export live below.
  */
 export function App(): JSX.Element {
   const { theme, toggleTheme } = useTheme();
   const [selection, setSelection] = useState<Selection | null>(null);
+  const [session, setSession] = useState<ActiveSession | null>(null);
   const [transportLocked, setTransportLocked] = useState(false);
   const [confirmChangeOpen, setConfirmChangeOpen] = useState(false);
+
+  // Autosaved session offered on load, and the "re-select the file" state after
+  // choosing to resume it.
+  const [resumeRecord, setResumeRecord] = useState<SessionRecord | null>(null);
+  const [awaitingReselect, setAwaitingReselect] = useState(false);
 
   // Object URL lifecycle (created + revoked) is owned by the hook.
   const url = useObjectUrl(selection?.file ?? null);
   const media: LoadedMedia | null =
     selection && url ? { file: selection.file, url, kind: selection.kind } : null;
+
+  // On load, offer to resume an autosaved session that has samples.
+  useEffect(() => {
+    let cancelled = false;
+    void loadSession().then((record) => {
+      if (!cancelled && record && record.samples.length > 0) setResumeRecord(record);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const handleLoad = (file: File, kind: MediaKind) => {
+    if (awaitingReselect && session) {
+      // Resuming: keep the restored buffer, just attach the re-selected file.
+      setAwaitingReselect(false);
+      setSelection({ file, kind });
+      return;
+    }
+    setSession(freshSession(file, DEFAULT_SCALE));
+    setSelection({ file, kind });
+  };
+
+  const handleResume = () => {
+    const record = resumeRecord;
+    if (!record) return;
+    const buffer = new SampleBuffer();
+    buffer.load(record.samples);
+    setSession({
+      buffer,
+      scale: record.scale,
+      initialRating: record.lastValue,
+      createdAt: record.createdAt,
+      mediaReference: record.mediaReference,
+    });
+    setAwaitingReselect(true);
+    setResumeRecord(null);
+  };
+
+  const handleDiscardResume = () => {
+    void clearSession();
+    setResumeRecord(null);
+  };
+
+  const handleChangeFile = () => {
+    void clearSession();
+    setConfirmChangeOpen(false);
+    setSelection(null);
+    setSession(null);
+    setAwaitingReselect(false);
+  };
+
+  const showRatingView = media && session && !awaitingReselect;
 
   return (
     <div className="app">
@@ -45,7 +125,7 @@ export function App(): JSX.Element {
         </div>
         <div className="app-spacer" />
 
-        {media && (
+        {showRatingView && (
           <>
             <button
               type="button"
@@ -73,12 +153,37 @@ export function App(): JSX.Element {
         <span className="app-badge">1D</span>
       </header>
 
-      {media ? (
-        <RatingView media={media} scale={DEFAULT_SCALE} transportLocked={transportLocked} />
+      {showRatingView ? (
+        <RatingView
+          media={media}
+          scale={session.scale}
+          transportLocked={transportLocked}
+          buffer={session.buffer}
+          initialRating={session.initialRating}
+          createdAt={session.createdAt}
+        />
       ) : (
         <main className="app-body">
-          <FileDropZone onLoad={setSelection} />
+          <div className="dropzone-column">
+            {awaitingReselect && session && (
+              <p className="resume-notice" role="status">
+                Resuming <strong>{session.mediaReference}</strong> —{' '}
+                {session.buffer.length.toLocaleString()} sample
+                {session.buffer.length === 1 ? '' : 's'} restored. Re-select the media file to
+                continue.
+              </p>
+            )}
+            <FileDropZone onLoad={({ file, kind }) => handleLoad(file, kind)} />
+          </div>
         </main>
+      )}
+
+      {resumeRecord && (
+        <ResumePrompt
+          record={resumeRecord}
+          onResume={handleResume}
+          onDiscard={handleDiscardResume}
+        />
       )}
 
       <ConfirmDialog
@@ -88,10 +193,7 @@ export function App(): JSX.Element {
         confirmLabel="Change file"
         cancelLabel="Keep rating"
         destructive
-        onConfirm={() => {
-          setConfirmChangeOpen(false);
-          setSelection(null);
-        }}
+        onConfirm={handleChangeFile}
         onCancel={() => setConfirmChangeOpen(false)}
       />
     </div>

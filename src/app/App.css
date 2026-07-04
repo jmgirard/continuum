@@ -135,3 +135,28 @@
   justify-content: center;
   padding: var(--space-5);
 }
+
+.dropzone-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 560px;
+}
+
+.resume-notice {
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: var(--radius-input);
+  text-align: center;
+}
+.resume-notice strong {
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
