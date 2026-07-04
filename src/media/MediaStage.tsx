@@ -1,21 +1,38 @@
+import type { SamplingMode } from '../sampling/types';
 import type { LoadedMedia } from './types';
 import './media.css';
+
+interface RecordingStatus {
+  active: boolean;
+  count: number;
+  mode: SamplingMode | null;
+}
 
 interface MediaStageProps {
   media: LoadedMedia;
   attach: (el: HTMLMediaElement | null) => void;
   hasError: boolean;
+  recording?: RecordingStatus;
+}
+
+function modeLabel(mode: SamplingMode | null): string {
+  if (mode === 'per_frame') return 'per-frame';
+  if (mode === 'fixed_100hz') return '100 Hz';
+  return '';
 }
 
 /**
  * The media panel: a letterboxed <video> (or an audio placard for <audio>),
  * with the file name shown quietly in the corner. Playback controls live in the
- * transport bar below; this element is also the sampling source in milestone 4.
+ * transport bar below; this element is also the sampling source (M4). A small
+ * capture indicator reports the live sample count.
  *
  * `controls` is intentionally omitted so transport is driven only by our bar
  * (respecting the transport lock); the native context menu download is disabled.
  */
-export function MediaStage({ media, attach, hasError }: MediaStageProps): JSX.Element {
+export function MediaStage({ media, attach, hasError, recording }: MediaStageProps): JSX.Element {
+  const showRec = recording && (recording.active || recording.count > 0);
+
   return (
     <div className="stage">
       {media.kind === 'video' ? (
@@ -43,6 +60,19 @@ export function MediaStage({ media, attach, hasError }: MediaStageProps): JSX.El
       <div className="stage-filename" title={media.file.name}>
         {media.file.name}
       </div>
+
+      {showRec && (
+        <div
+          className={`stage-rec${recording.active ? ' stage-rec--on' : ''}`}
+          aria-live="off"
+          title="Samples captured this session"
+        >
+          <span className="stage-rec-dot" aria-hidden="true" />
+          <span className="stage-rec-count">{recording.count.toLocaleString()}</span>
+          <span className="stage-rec-label">samples</span>
+          {recording.mode && <span className="stage-rec-mode">{modeLabel(recording.mode)}</span>}
+        </div>
+      )}
     </div>
   );
 }
