@@ -7,6 +7,8 @@ import { ResumePrompt } from '../session/ResumePrompt';
 import { useObjectUrl } from '../media/useObjectUrl';
 import { clearSession, loadSession } from '../session/sessionStore';
 import { SampleBuffer } from '../sampling/SampleBuffer';
+import { supportsVideoFrameCallback } from '../sampling/samplingEngine';
+import { buildCsv, downloadCsv, exportFilename } from '../export/csv';
 import { DEFAULT_SCALE, initialValue, type ScaleConfig } from '../config/scale';
 import { quantize } from '../rating/scaleModel';
 import type { SessionRecord } from '../session/types';
@@ -110,6 +112,20 @@ export function App(): JSX.Element {
     setAwaitingReselect(false);
   };
 
+  const handleExport = () => {
+    if (!session || !media) return;
+    const samplingMode =
+      media.kind === 'video' && supportsVideoFrameCallback() ? 'per_frame' : 'fixed_100hz';
+    const csv = buildCsv({
+      scale: session.scale,
+      mediaReference: session.mediaReference,
+      samplingMode,
+      createdAt: session.createdAt,
+      samples: session.buffer.snapshot(),
+    });
+    downloadCsv(exportFilename(session.mediaReference), csv);
+  };
+
   const showRatingView = media && session && !awaitingReselect;
 
   return (
@@ -134,6 +150,9 @@ export function App(): JSX.Element {
               aria-pressed={transportLocked}
             >
               Transport {transportLocked ? 'locked' : 'free'}
+            </button>
+            <button type="button" className="pill-btn" onClick={handleExport}>
+              Export CSV
             </button>
             <button type="button" className="text-btn" onClick={() => setConfirmChangeOpen(true)}>
               Change file

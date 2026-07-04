@@ -126,6 +126,22 @@
   color: var(--fg);
 }
 
+/* Header action pill (Export) */
+.pill-btn {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fg);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.pill-btn:hover {
+  border-color: var(--fg-3);
+}
+
 /* Centered body for the pre-load (file browse) state */
 .app-body {
   flex: 1;

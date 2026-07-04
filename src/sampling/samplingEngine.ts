@@ -126,6 +126,17 @@ function supportsFrameCallback(media: HTMLMediaElement): boolean {
   return typeof asVideo(media).requestVideoFrameCallback === 'function';
 }
 
+/**
+ * Whether this browser can drive per-frame video sampling. Lets callers (e.g. the
+ * CSV exporter) resolve the sampling mode without holding the media element.
+ */
+export function supportsVideoFrameCallback(): boolean {
+  return (
+    typeof HTMLVideoElement !== 'undefined' &&
+    typeof HTMLVideoElement.prototype.requestVideoFrameCallback === 'function'
+  );
+}
+
 function createWorkerTimer(intervalMs: number, onTick: () => void): SamplingTimer {
   const worker = new Worker(new URL('./worker/samplerTimer.worker.ts', import.meta.url), {
     type: 'module',
